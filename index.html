@@ -24,49 +24,60 @@
 </head>
 <body class="bg-gray-900 text-white">
 
-    <div class="max-w-lg mx-auto bg-gray-900 min-h-screen flex flex-col">
+    <div class="w-full bg-gray-900 min-h-screen flex flex-col">
         
-        <header class="bg-gray-800/80 backdrop-blur-sm sticky top-0 z-10 p-4 shadow-lg">
-            <div class="flex items-center justify-between">
-                <div class="flex items-center space-x-3">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-purple-400"><path d="m12 8-9.04 9.06a2.82 2.82 0 1 0 3.98 3.98L16 12"/><circle cx="17" cy="7" r="5"/></svg>
-                    <h1 class="text-2xl font-bold tracking-tight">TooEvento</h1>
+        <header class="bg-gray-800/80 backdrop-blur-sm sticky top-0 z-10 px-4 sm:px-8 lg:px-12 py-4 shadow-lg">
+            <div class="max-w-7xl mx-auto">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center space-x-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M8 2v4"></path>
+                            <path d="M16 2v4"></path>
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                            <path d="M3 10h18"></path>
+                        </svg>
+                        <h1 class="text-2xl font-bold tracking-tight">TooEvento</h1>
+                    </div>
+                    <!-- Campanita de Notificación (botón) -->
+                    <button id="bell-button" class="relative p-1">
+                        <i data-lucide="bell" class="w-6 h-6 text-gray-300"></i>
+                        <span id="bell-dot" class="hidden absolute top-0 right-0 w-2.5 h-2.5 bg-red-500 rounded-full border-2 border-gray-800"></span>
+                    </button>
                 </div>
-                <!-- Campanita de Notificación (botón) -->
-                <button id="bell-button" class="relative p-1">
-                    <i data-lucide="bell" class="w-6 h-6 text-gray-300"></i>
-                    <span id="bell-dot" class="hidden absolute top-0 right-0 w-2.5 h-2.5 bg-red-500 rounded-full border-2 border-gray-800"></span>
-                </button>
-            </div>
-            <p class="text-gray-400 text-sm mt-1">Tu guía de eventos en vivo.</p>
-            
-            <div class="mt-3 relative" id="custom-country-selector">
-                <label class="text-xs font-medium text-gray-400">Selecciona un país:</label>
-                <button id="country-selector-button" class="w-full bg-gray-700 border border-gray-600 rounded-md p-2 mt-1 text-sm focus:outline-none focus:ring-2 focus:ring-purple-500 flex justify-between items-center text-left">
-                    <span class="truncate">Chile</span>
-                    <i data-lucide="chevron-down" class="w-4 h-4 transition-transform duration-200 ease-in-out flex-shrink-0 ml-2"></i>
-                </button>
-                <div id="country-options" class="hidden absolute w-full mt-1 bg-gray-800 border border-gray-600 rounded-md shadow-lg z-20 max-h-60 overflow-y-auto"></div>
-            </div>
+                <p class="text-gray-400 text-sm mt-1">Tu guía de eventos en vivo.</p>
+                
+                <div class="mt-3 relative grid grid-cols-1 sm:grid-cols-3 gap-4" id="custom-country-selector">
+                    <div class="sm:col-span-1">
+                        <label class="text-xs font-medium text-gray-400">Selecciona un país:</label>
+                        <button id="country-selector-button" class="w-full bg-gray-700 border border-gray-600 rounded-md p-2 mt-1 text-sm focus:outline-none focus:ring-2 focus:ring-purple-500 flex justify-between items-center">
+                            <span class="truncate">Chile</span>
+                            <i data-lucide="chevron-down" class="w-4 h-4 transition-transform duration-200 ease-in-out flex-shrink-0 ml-2"></i>
+                        </button>
+                        <div id="country-options" class="hidden absolute w-full mt-1 bg-gray-800 border border-gray-600 rounded-md shadow-lg z-20 max-h-60 overflow-y-auto"></div>
+                    </div>
+                </div>
 
-            <div id="category-tabs" class="flex space-x-1 sm:space-x-2 mt-4 border-b border-gray-700 flex-nowrap">
-                <button class="tab-button active flex-1 text-center" data-category="musica"><i data-lucide="music-2" class="w-4 h-4 inline-block mr-1"></i>Música</button>
-                <button class="tab-button flex-1 text-center" data-category="deportes"><i data-lucide="trophy" class="w-4 h-4 inline-block mr-1"></i>Deportes</button>
-                <button class="tab-button flex-1 text-center" data-category="entretencion"><i data-lucide="sparkles" class="w-4 h-4 inline-block mr-1"></i>Entretención</button>
+                <div id="category-tabs" class="flex space-x-2 sm:space-x-4 mt-6 border-b border-gray-700 flex-wrap lg:flex-nowrap gap-2">
+                    <button class="tab-button active flex-1 sm:flex-none text-center whitespace-nowrap" data-category="musica"><i data-lucide="music-2" class="w-4 h-4 inline-block mr-1"></i>Música</button>
+                    <button class="tab-button flex-1 sm:flex-none text-center whitespace-nowrap" data-category="deportes"><i data-lucide="trophy" class="w-4 h-4 inline-block mr-1"></i>Deportes</button>
+                    <button class="tab-button flex-1 sm:flex-none text-center whitespace-nowrap" data-category="entretencion"><i data-lucide="sparkles" class="w-4 h-4 inline-block mr-1"></i>Entretención</button>
+                </div>
             </div>
         </header>
 
-        <main class="p-4 flex-grow">
-            <h2 id="events-title" class="text-xl font-semibold text-purple-300 mb-4">Próximos Eventos</h2>
-            
-            <div id="event-list" class="space-y-4"></div>
-            
-            <div id="infinite-loader" class="flex justify-center py-4 hidden">
-                <div class="loader"></div>
+        <main class="px-4 sm:px-8 lg:px-12 py-6 flex-grow">
+            <div class="max-w-7xl mx-auto">
+                <h2 id="events-title" class="text-2xl sm:text-3xl font-semibold text-purple-300 mb-6">Próximos Eventos</h2>
+                
+                <div id="event-list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"></div>
+                
+                <div id="infinite-loader" class="flex justify-center py-8 hidden">
+                    <div class="loader"></div>
+                </div>
             </div>
         </main>
 
-        <footer class="text-center p-4">
+        <footer class="text-center px-4 py-4 max-w-7xl mx-auto w-full">
             <p class="text-xs text-gray-500">&copy; 2025 TooEvento | Desarrollado por Braulio Cisternas, Chile</p>
         </footer>
     </div>
@@ -195,13 +206,13 @@
             const infiniteLoader = document.getElementById('infinite-loader');
 
             if (currentPage === 0) {
-                document.getElementById('event-list').innerHTML = `<div class="flex justify-center py-10"><div class="loader"></div></div>`;
+                document.getElementById('event-list').innerHTML = `<div class="flex justify-center py-10 col-span-full"><div class="loader"></div></div>`;
             } else {
                 infiniteLoader.classList.remove('hidden');
             }
             
             const todayISOString = new Date().toISOString().split('.')[0] + "Z";
-            const apiUrl = `https://app.ticketmaster.com/discovery/v2/events.json?classificationName=${classificationName}&countryCode=${countryCode}&apikey=${TICKETMASTER_API_KEY}&sort=date,asc&page=${currentPage}&startDateTime=${todayISOString}`;
+            const apiUrl = `https://app.ticketmaster.com/discovery/v2/events.json?classificationName=${classificationName}&countryCode=${countryCode}&apikey=${TICKETMASTER_API_KEY}&sort=date,asc&startDateTime=${todayISOString}&size=50&page=${currentPage}`;
             
             try {
                 const response = await fetch(apiUrl);
@@ -258,7 +269,7 @@
             document.getElementById('events-title').textContent = `Eventos de ${category} en ${countryName}`;
             
             if (events.length === 0 && !isLoading) {
-                eventListContainer.innerHTML = `<div class="text-center py-10"><i data-lucide="calendar-off" class="mx-auto h-12 w-12 text-gray-500"></i><p class="mt-4 text-gray-400">No se encontraron eventos para esta categoría en ${countryName}.</p></div>`;
+                eventListContainer.innerHTML = `<div class="text-center py-10 col-span-full"><i data-lucide="calendar-off" class="mx-auto h-12 w-12 text-gray-500"></i><p class="mt-4 text-gray-400">No se encontraron eventos</p></div>`;
             } else {
                  eventListContainer.innerHTML = events.map(event => createEventCard(event)).join('');
             }
@@ -266,16 +277,14 @@
         }
 
         function mapCategoryToClassification(category) { switch (category) { case 'musica': return 'Music'; case 'deportes': return 'Sports'; case 'entretencion': return 'Arts & Theatre'; default: return 'Music'; } }
-        function setupInfiniteScroll() { window.addEventListener('scroll', () => { if (isLoading || allEventsLoaded) return; if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 300) { currentPage++; fetchTicketmasterEvents(); } }); }
-        function setupCustomCountrySelector() { const selectorContainer = document.getElementById('custom-country-selector'); const button = document.getElementById('country-selector-button'); const optionsContainer = document.getElementById('country-options'); optionsContainer.innerHTML = Object.entries(countries).map(([code, name]) => `<a href="#" class="block px-3 py-2 text-sm text-gray-300 hover:bg-purple-600 hover:text-white" data-code="${code}">${name}</a>`).join(''); button.addEventListener('click', () => { optionsContainer.classList.toggle('hidden'); const icon = button.querySelector('svg'); if (icon) icon.classList.toggle('rotate-180'); }); optionsContainer.addEventListener('click', (e) => { e.preventDefault(); const selectedOption = e.target.closest('a'); if (!selectedOption) return; button.querySelector('span').textContent = selectedOption.textContent; button.dataset.code = selectedOption.dataset.code; optionsContainer.classList.add('hidden'); const icon = button.querySelector('svg'); if (icon) icon.classList.remove('rotate-180'); startNewSearch(); }); document.addEventListener('click', (e) => { if (!selectorContainer.contains(e.target)) { optionsContainer.classList.add('hidden'); const icon = button.querySelector('svg'); if (icon) icon.classList.remove('rotate-180'); } }); button.dataset.code = 'CL'; }
-        function setupTabs() { const tabsContainer = document.getElementById('category-tabs'); tabsContainer.addEventListener('click', (e) => { const clickedTab = e.target.closest('.tab-button'); if (!clickedTab) return; tabsContainer.querySelectorAll('.tab-button').forEach(tab => tab.classList.remove('active')); clickedTab.classList.add('active'); startNewSearch(); }); }
-        function transformApiEvent(event) { return { title: event.name, date: event.dates.start.localDate, time: event.dates.start.localTime, venue: event._embedded?.venues[0]?.name || 'Lugar por confirmar', city: event._embedded?.venues[0]?.city?.name || '', ticketUrl: event.url, image: event.images.find(img => img.ratio === '3_2')?.url || 'https://placehold.co/300x200/4b5563/ffffff?text=Evento', price: event.priceRanges?.[0] ? `${event.priceRanges[0].min} - ${event.priceRanges[0].max} ${event.priceRanges[0].currency}` : 'Consultar precio' }; }
-        function renderError(message = "Hubo un error al cargar los eventos.") { const eventListContainer = document.getElementById('event-list'); if (eventListContainer) { eventListContainer.innerHTML = `<div class="text-center py-10 bg-red-900/20 rounded-lg"><i data-lucide="wifi-off" class="mx-auto h-12 w-12 text-red-400"></i><p class="mt-4 text-red-300">${message}</p><p class="text-xs text-gray-400 mt-2">Verifica la consola para más detalles.</p></div>`; lucide.createIcons(); } }
+        function setupInfiniteScroll() { window.addEventListener('scroll', () => { if (isLoading || allEventsLoaded) return; if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 500) { currentPage++; fetchTicketmasterEvents(); } }); }
+        function setupCustomCountrySelector() { const selectorContainer = document.getElementById('custom-country-selector'); const button = document.getElementById('country-selector-button'); const optionsContainer = document.getElementById('country-options'); button.dataset.code = 'CL'; Object.entries(countries).forEach(([code, name]) => { const option = document.createElement('button'); option.type = 'button'; option.textContent = name; option.className = 'w-full text-left px-3 py-2 text-sm hover:bg-gray-700 transition-colors'; option.addEventListener('click', () => { button.dataset.code = code; button.querySelector('span').textContent = name; optionsContainer.classList.add('hidden'); startNewSearch(); }); optionsContainer.appendChild(option); }); button.addEventListener('click', () => optionsContainer.classList.toggle('hidden')); document.addEventListener('click', (e) => { if (!selectorContainer.contains(e.target)) optionsContainer.classList.add('hidden'); }); }
+        function setupTabs() { const tabsContainer = document.getElementById('category-tabs'); tabsContainer.addEventListener('click', (e) => { const clickedTab = e.target.closest('.tab-button'); if (!clickedTab) return; document.querySelectorAll('.tab-button').forEach(tab => tab.classList.remove('active')); clickedTab.classList.add('active'); startNewSearch(); }); }
+        function transformApiEvent(event) { return { title: event.name, date: event.dates.start.localDate, time: event.dates.start.localTime, venue: event._embedded?.venues[0]?.name || 'Lugar por confirmar', city: event._embedded?.venues[0]?.city?.name || 'Ciudad por confirmar', ticketUrl: event.url || '#', image: event.images?.[0]?.url || '', price: event.priceRanges?.[0]?.min || 'N/A' }; }
+        function renderError(message = "Hubo un error al cargar los eventos.") { const eventListContainer = document.getElementById('event-list'); if (eventListContainer) { eventListContainer.innerHTML = `<div class="text-center py-10"><i data-lucide="alert-circle" class="mx-auto h-12 w-12 text-red-500"></i><p class="mt-4 text-red-400">${message}</p></div>`; lucide.createIcons(); } }
         function showApiKeyWarning() { renderError("Configuración Requerida: Falta la API Key de Ticketmaster."); }
         function showFirebaseConfigWarning() { renderError("Configuración Requerida: Falta la configuración de Firebase."); }
-        function createEventCard(event) { const { title, date, time, venue, city, ticketUrl, image, price } = event; const eventDate = new Date(`${date}T${time || '00:00:00'}`); const formattedDate = eventDate.toLocaleDateString('es-CL', { weekday: 'long', day: 'numeric', month: 'long' }); return `<div class="bg-gray-800 rounded-xl overflow-hidden shadow-lg transform hover:scale-105 transition-transform duration-300 ease-in-out"><div class="flex"><img src="${image}" onerror="this.onerror=null;this.src='https://placehold.co/300x200/4b5563/ffffff?text=Evento';" alt="Imagen de ${title}" class="w-28 h-auto object-cover"><div class="p-4 flex flex-col justify-between flex-grow"><div><h3 class="text-lg font-bold text-purple-300 leading-tight">${title}</h3><p class="text-gray-300 font-medium capitalize text-sm">${formattedDate}</p><div class="mt-2 space-y-1 text-xs text-gray-400"><div class="flex items-center"><i data-lucide="map-pin" class="w-3 h-3 mr-2 text-purple-400"></i><span>${venue}, ${city}</span></div>${time ? `<div class="flex items-center"><i data-lucide="clock" class="w-3 h-3 mr-2 text-purple-400"></i><span>${time.substring(0,5)} hrs.</span></div>` : ''}<div class="flex items-center"><i data-lucide="dollar-sign" class="w-3 h-3 mr-2 text-purple-400"></i><span>${price}</span></div></div></div><a href="${ticketUrl}" target="_blank" class="mt-3 bg-purple-600 hover:bg-purple-500 text-white font-bold py-2 px-3 rounded-lg text-center text-sm transition-colors duration-200"><i data-lucide="ticket" class="w-4 h-4 inline-block mr-1"></i>Ver Entradas</a></div></div></div>`; }
+        function createEventCard(event) { const { title, date, time, venue, city, ticketUrl, image, price } = event; const eventDate = new Date(`${date}T${time || '00:00:00'}`); const formattedDate = eventDate.toLocaleDateString('es-ES', { day: '2-digit', month: '2-digit', year: 'numeric' }); const formattedTime = time ? eventDate.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' }) : 'Hora por confirmar'; return `<div class="bg-gradient-to-b from-gray-800 to-gray-900 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 flex flex-col h-full"><div class="relative overflow-hidden h-40 sm:h-48 bg-gray-700">${image ? `<img src="${image}" alt="${title}" class="w-full h-full object-cover" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 300%22%3E%3Crect fill=%22%23374151%22 width=%22400%22 height=%22300%22/%3E%3C/svg%3E'">` : '<div class="w-full h-full bg-gradient-to-r from-purple-700 to-pink-500 flex items-center justify-center"><i data-lucide="image" class="w-8 h-8 text-gray-300"></i></div>'}</div><div class="p-3 sm:p-4 flex-1 flex flex-col"><h3 class="font-bold text-sm sm:text-base text-white line-clamp-2 mb-2">${title}</h3><div class="text-xs sm:text-sm text-gray-300 space-y-1 flex-1"><div class="flex items-center space-x-1"><i data-lucide="calendar" class="w-3 h-3 sm:w-4 sm:h-4 text-purple-400 flex-shrink-0"></i><span>${formattedDate}</span></div><div class="flex items-center space-x-1"><i data-lucide="clock" class="w-3 h-3 sm:w-4 sm:h-4 text-purple-400 flex-shrink-0"></i><span>${formattedTime}</span></div><div class="flex items-start space-x-1"><i data-lucide="map-pin" class="w-3 h-3 sm:w-4 sm:h-4 text-purple-400 flex-shrink-0 mt-0.5"></i><span class="line-clamp-1">${venue}</span></div><div class="flex items-start space-x-1"><i data-lucide="building-2" class="w-3 h-3 sm:w-4 sm:h-4 text-purple-400 flex-shrink-0 mt-0.5"></i><span class="line-clamp-1">${city}</span></div></div><div class="mt-3 pt-3 border-t border-gray-700"><p class="text-purple-300 font-semibold text-xs sm:text-sm">Desde ${price === 'N/A' ? 'Precio variable' : `$${price}`}</p></div></div><a href="${ticketUrl}" target="_blank" rel="noopener noreferrer" class="mt-3 w-full bg-purple-600 hover:bg-purple-700 transition-colors duration-200 text-white font-semibold py-2 px-3 rounded-lg text-center text-xs sm:text-sm flex items-center justify-center space-x-1"><span>Comprar entradas</span><i data-lucide="external-link" class="w-3 h-3 sm:w-4 sm:h-4"></i></a></div>`; }
     </script>
 </body>
 </html>
-
-
